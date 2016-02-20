@@ -1,14 +1,18 @@
-/// <reference path="../../../src/components/menu/interface.d.ts"/>
 
 import * as _ from 'lodash';
 import * as React from 'react';
-import MenuItem from '../../components/menu/MenuItem.tsx';
+import * as MenuItem from '../../components/menu/MenuItem.tsx';
 
-export default class Menu extends React.Component<IMenu, any> {
+export interface IMenuProps extends React.Props<any> {
+  title : string;
+  items : Array<MenuItem.IMenuItemProps>;
+};
+
+export class Menu extends React.Component<IMenuProps, any> {
 
   public render () {
     let items = _.map(this.props.items, (item, index) => {
-      return (<MenuItem key={`menu-item-${index}`} {...item} />)
+      return (<MenuItem.MenuItem key={`menu-item-${index}`} {...item} />)
     });
     return (
       <div className="menu">
@@ -16,5 +20,5 @@ export default class Menu extends React.Component<IMenu, any> {
         <div className="item-list">{ items }</div>
       </div>
     );
-  }
-}
+  };
+};

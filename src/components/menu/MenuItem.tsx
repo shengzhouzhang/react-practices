@@ -1,8 +1,13 @@
-/// <reference path="../../../src/components/menu/interface.d.ts"/>
 
 import * as React from 'react';
 
-export default class MenuItem extends React.Component<IMenuItem, {}> {
+export interface IMenuItemProps extends React.Props<any> {
+  key: string,
+  name: string,
+  imageUrl: string
+}
+
+export class MenuItem extends React.Component<IMenuItemProps, {}> {
 
   public render () {
     return (

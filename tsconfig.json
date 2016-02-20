@@ -24,7 +24,6 @@
     "rewriteTsconfig": true
   },
   "files": [
-    "src/components/menu/interface.d.ts",
     "typings/lodash/lodash.d.ts",
     "typings/react/react-dom.d.ts",
     "typings/react/react.d.ts",
