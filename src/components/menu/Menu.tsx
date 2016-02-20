@@ -1,14 +1,12 @@
+/// <reference path="../../../src/components/menu/interface.d.ts"/>
 
-import _ from 'lodash';
-import React from 'react';
-import MenuItem from '../../components/menu/Item';
+import * as _ from 'lodash';
+import * as React from 'react';
+import MenuItem from '../../components/menu/MenuItem.tsx';
 
-export default class Menu extends React.Component {
-  static propTypes = {
-    title: React.PropTypes.string.isRequired,
-    items: React.PropTypes.array.isRequired
-  };
-  render = () => {
+export default class Menu extends React.Component<IMenu, any> {
+
+  public render () {
     let items = _.map(this.props.items, (item, index) => {
       return (<MenuItem key={`menu-item-${index}`} {...item} />)
     });
@@ -18,5 +16,5 @@ export default class Menu extends React.Component {
         <div className="item-list">{ items }</div>
       </div>
     );
-  };
-};
+  }
+}

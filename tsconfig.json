@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "filesGlob": [
+    "**/*.ts",
+    "**/*.tsx",
+    "!node_modules/**"
+  ],
+  "exclude": [],
+  "atom": {
+    "rewriteTsconfig": true
+  },
+  "files": [
+    "src/components/menu/interface.d.ts",
+    "typings/lodash/lodash.d.ts",
+    "typings/react/react-dom.d.ts",
+    "typings/react/react.d.ts",
+    "typings/tsd.d.ts",
+    "src/components/menu/Menu.tsx",
+    "src/components/menu/MenuItem.tsx"
+  ]
+}
