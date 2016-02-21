@@ -4,11 +4,18 @@ import * as Promise from 'bluebird';
 import { IMenu, IMenuItem } from '../../domains/menu';
 import { IAgent } from '../../browser/repositories/Agent';
 
-export default class MenuRepository {
-  agent: IAgent;
+export interface IMenuRepository {
+  responseEntityToMenu (entity: any): IMenu;
+  fetchMenu(): Promise<IMenu>;
+};
 
-  constructor(agent: IAgent) {
+export class MenuRepository implements IMenuRepository {
+  agent: IAgent;
+  path: string;
+
+  constructor(agent: IAgent, path: string) {
     this.agent = agent;
+    this.path = path;
   };
 
   public responseEntityToMenu (entity: any = {}): IMenu {
@@ -20,8 +27,8 @@ export default class MenuRepository {
     };
   };
 
-  public fetchMenu(uri: string): Promise<IMenu> {
-    return this.agent.request('GET', uri)
+  public fetchMenu(): Promise<IMenu> {
+    return this.agent.request('GET', this.path)
       .then(entity => this.responseEntityToMenu(entity));
   };
 };
