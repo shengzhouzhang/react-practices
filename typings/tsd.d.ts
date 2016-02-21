@@ -6,3 +6,7 @@
 /// <reference path="assertion-error/assertion-error.d.ts" />
 /// <reference path="chai/chai.d.ts" />
 /// <reference path="enzyme/enzyme.d.ts" />
+/// <reference path="form-data/form-data.d.ts" />
+/// <reference path="node/node.d.ts" />
+/// <reference path="request/request.d.ts" />
+/// <reference path="bluebird/bluebird.d.ts" />
