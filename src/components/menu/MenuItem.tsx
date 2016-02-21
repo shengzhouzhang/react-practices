@@ -2,7 +2,6 @@
 import * as React from 'react';
 
 export interface IMenuItemProps extends React.Props<any> {
-  key?: string,
   name: string,
   imageUrl: string
 }
