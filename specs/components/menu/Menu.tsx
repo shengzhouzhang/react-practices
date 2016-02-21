@@ -1,10 +1,10 @@
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import Menu from '../../../src/components/menu';
-import MenuItem from '../../../src/components/menu/Item';
+import { Menu, IMenuProps } from '../../../src/components/menu/Menu';
+import { MenuItem, IMenuItemProps } from '../../../src/components/menu/MenuItem';
 
 describe('Menu Item Component', () => {
 

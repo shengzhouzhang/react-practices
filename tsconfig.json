@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "isolatedModules": false,
@@ -24,10 +23,16 @@
     "rewriteTsconfig": true
   },
   "files": [
+    "typings/assertion-error/assertion-error.d.ts",
+    "typings/chai/chai.d.ts",
+    "typings/enzyme/enzyme.d.ts",
     "typings/lodash/lodash.d.ts",
+    "typings/mocha/mocha.d.ts",
     "typings/react/react-dom.d.ts",
     "typings/react/react.d.ts",
     "typings/tsd.d.ts",
+    "specs/components/menu/Menu.tsx",
+    "specs/components/menu/MenuItem.tsx",
     "src/components/menu/Menu.tsx",
     "src/components/menu/MenuItem.tsx"
   ]

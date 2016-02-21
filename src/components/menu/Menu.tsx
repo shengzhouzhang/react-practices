@@ -1,7 +1,7 @@
 
 import * as _ from 'lodash';
 import * as React from 'react';
-import * as MenuItem from '../../components/menu/MenuItem.tsx';
+import * as MenuItem from '../../components/menu/MenuItem';
 
 export interface IMenuProps extends React.Props<any> {
   title : string;
