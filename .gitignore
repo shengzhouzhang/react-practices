@@ -3,4 +3,5 @@ node_modules
 build
 npm-debug.log
 .env
-**/*.js
+specs/**/*.js
+src/**/*.js
