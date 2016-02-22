@@ -2,11 +2,9 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as MenuItem from '../../components/menu/MenuItem';
+import { IMenu, IMenuItem } from '../../domains/menu';
 
-export interface IMenuProps extends React.Props<any> {
-  title : string;
-  items : Array<MenuItem.IMenuItemProps>;
-};
+export interface IMenuProps extends IMenu, React.Props<any> {};
 
 export class Menu extends React.Component<IMenuProps, any> {
 

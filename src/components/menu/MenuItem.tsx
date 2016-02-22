@@ -1,10 +1,8 @@
 
 import * as React from 'react';
+import { IMenuItem } from '../../domains/menu';
 
-export interface IMenuItemProps extends React.Props<any> {
-  name: string,
-  imageUrl: string
-}
+export interface IMenuItemProps extends IMenuItem, React.Props<any> {};
 
 export class MenuItem extends React.Component<IMenuItemProps, {}> {
 
