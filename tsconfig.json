@@ -24,8 +24,8 @@
   },
   "files": [
     "src/browser/repositories/Agent.ts",
-    "src/browser/repositories/Menu.ts",
-    "src/domains/menu.ts",
+    "src/browser/repositories/Photos.ts",
+    "src/domains/photo.ts",
     "typings/assertion-error/assertion-error.d.ts",
     "typings/bluebird/bluebird.d.ts",
     "typings/chai/chai.d.ts",
@@ -38,11 +38,11 @@
     "typings/react/react.d.ts",
     "typings/request/request.d.ts",
     "typings/tsd.d.ts",
-    "specs/components/menu/Menu.tsx",
-    "specs/components/menu/MenuItem.tsx",
+    "specs/components/PhotoGrid/Gird.tsx",
+    "specs/components/PhotoGrid/GridItem.tsx",
     "src/browser/index.tsx",
-    "src/components/menu/Menu.tsx",
-    "src/components/menu/MenuItem.tsx",
-    "src/components/menu/MenuLoader.tsx"
+    "src/components/PhotoGrid/Container.tsx",
+    "src/components/PhotoGrid/Grid.tsx",
+    "src/components/PhotoGrid/GridItem.tsx"
   ]
 }

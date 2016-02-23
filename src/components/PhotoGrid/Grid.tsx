@@ -1,16 +1,16 @@
 
 import * as _ from 'lodash';
 import * as React from 'react';
-import * as MenuItem from '../../components/menu/MenuItem';
-import { IMenu, IMenuItem } from '../../domains/menu';
+import * as GridItem from '../../components/PhotoGrid/GridItem';
+import { IPhotos, IPhoto } from '../../domains/photo';
 
-export interface IMenuProps extends IMenu, React.Props<any> {};
+export interface IGridProps extends IPhotos, React.Props<any> {};
 
-export class Menu extends React.Component<IMenuProps, any> {
+export class Grid extends React.Component<IGridProps, any> {
 
   public render () {
     let items = _.map(this.props.items, (item, index) => {
-      return (<MenuItem.MenuItem key={`menu-item-${index}`} {...item} />)
+      return (<GridItem.Photo key={`menu-item-${index}`} {...item} />)
     });
     return (
       <div className="menu">

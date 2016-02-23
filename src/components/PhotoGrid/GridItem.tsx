@@ -1,10 +1,10 @@
 
 import * as React from 'react';
-import { IMenuItem } from '../../domains/menu';
+import { IPhoto } from '../../domains/photo';
 
-export interface IMenuItemProps extends IMenuItem, React.Props<any> {};
+export interface IPhotoProps extends IPhoto, React.Props<any> {};
 
-export class MenuItem extends React.Component<IMenuItemProps, {}> {
+export class Photo extends React.Component<IPhotoProps, {}> {
 
   public render () {
     return (
