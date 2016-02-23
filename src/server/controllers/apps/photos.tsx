@@ -11,7 +11,7 @@ export default class PhotoAppController {
     this.photosRepository = photosRepository;
   };
 
-  route (req, res) {
+  route = (req, res) => {
     this.photosRepository.fetchPhotos()
       .then(photos => {
         res.render('index', {

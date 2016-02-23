@@ -6,7 +6,7 @@ export interface IPhotoProps extends IPhoto, React.Props<any> {};
 
 export class Photo extends React.Component<IPhotoProps, {}> {
 
-  public render () {
+  render () {
     return (
       <div className="menu-item">
         <img className="photo-cover" src={ this.props.imageUrl } />

@@ -20,7 +20,7 @@ export class PhotosRepository implements IPhotosRepository {
     this.parse = parse;
   };
 
-  public fetchPhotos(): Promise<IPhotos> {
+  public fetchPhotos = (): Promise<IPhotos> => {
     return this.agent.request('GET', this.path)
       .then(entity => this.parse(entity));
   };

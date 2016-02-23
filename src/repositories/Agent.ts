@@ -14,7 +14,7 @@ export class Agent implements IAgent {
     this.baseUri = baseUri;
   };
 
-  request(method: string, path: string, headers?: any): Promise<any> {
+  request = (method: string, path: string, headers?: any): Promise<any> => {
     let options = {
       method: method,
       uri: `${this.baseUri}${path}`,
