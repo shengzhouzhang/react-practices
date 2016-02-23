@@ -9,8 +9,8 @@ export class Photo extends React.Component<IPhotoProps, {}> {
   public render () {
     return (
       <div className="menu-item">
-        <img className="image-cover" src={ this.props.imageUrl } />
-        <span className="name">{ this.props.name }</span>
+        <img className="photo-cover" src={ this.props.imageUrl } />
+        <span className="author">{ this.props.author }</span>
       </div>
     );
   }

@@ -6,7 +6,8 @@ import { Grid } from '../../components/PhotoGrid/Grid';
 import { IPhotosRepository } from '../../browser/repositories/Photos';
 
 export interface IGirdContainerProps extends React.Props<any> {
-  repository : IPhotosRepository;
+  photos: IPhotos;
+  repository: IPhotosRepository;
 };
 
 export interface IGirdContainerState {
@@ -19,6 +20,7 @@ export class GirdContainer extends React.Component<IGirdContainerProps, IGirdCon
   constructor (props) {
     super(props);
     this.repository = props.repository;
+    this.state.photos = this.props.photos;
   };
 
   public render () {

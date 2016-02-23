@@ -11,8 +11,9 @@ const MENU_PATH = '';
 let agent = new Agent(BASE_URI);
 
 function renderMenuView () {
+  let photos = JSON.parse(document.querySelector('.initial-state').innerHTML);
   ReactDOM.render(
-    <GirdContainer repository={new PhotosRepository(agent, MENU_PATH)} />,
+    <GirdContainer photos={photos} repository={new PhotosRepository(agent, MENU_PATH)} />,
     document.querySelector('.app-container')
   );
 };
