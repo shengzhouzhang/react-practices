@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { GirdContainer } from '../../../components/PhotoGrid/Container';
-import { IPhotosRepository } from '../../../server/repositories/Photos';
+import { IPhotosRepository } from '../../../repositories/Photos';
 
 export default class PhotoAppController {
   photosRepository: IPhotosRepository;

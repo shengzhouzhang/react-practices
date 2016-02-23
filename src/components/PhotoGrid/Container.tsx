@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { IPhotos } from '../../domains/photo';
 import { Grid } from '../../components/PhotoGrid/Grid';
-import { IPhotosRepository } from '../../browser/repositories/Photos';
+import { IPhotosRepository } from '../../repositories/Photos';
 
 export interface IGirdContainerProps extends React.Props<any> {
   photos: IPhotos;

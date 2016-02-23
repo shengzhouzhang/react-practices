@@ -23,13 +23,13 @@
     "rewriteTsconfig": true
   },
   "files": [
-    "src/browser/repositories/Agent.ts",
-    "src/browser/repositories/Photos.ts",
+    "src/browser/repositories/photos.ts",
     "src/domains/photo.ts",
+    "src/repositories/Agent.ts",
+    "src/repositories/Photos.ts",
     "src/server/config/index.ts",
     "src/server/index.ts",
-    "src/server/repositories/Agent.ts",
-    "src/server/repositories/Photos.ts",
+    "src/server/repositories/photos.ts",
     "typings/assertion-error/assertion-error.d.ts",
     "typings/bluebird/bluebird.d.ts",
     "typings/chai/chai.d.ts",
