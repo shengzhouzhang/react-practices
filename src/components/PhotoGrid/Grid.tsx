@@ -10,12 +10,12 @@ export class Grid extends React.Component<IGridProps, any> {
 
   render () {
     let items = _.map(this.props.items, (item, index) => {
-      return (<GridItem.Photo key={`menu-item-${index}`} {...item} />)
+      return (<GridItem.Photo key={`grid-item-${index}`} {...item} />)
     });
     return (
-      <div className="menu">
+      <div className="photos">
         <div className="header">{ this.props.title }</div>
-        <div className="item-list">{ items }</div>
+        <div className="photo-list">{ items }</div>
       </div>
     );
   };
