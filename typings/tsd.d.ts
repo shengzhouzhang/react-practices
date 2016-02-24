@@ -14,3 +14,4 @@
 /// <reference path="mime/mime.d.ts" />
 /// <reference path="serve-static/serve-static.d.ts" />
 /// <reference path="express-handlebars/express-handlebars.d.ts" />
+/// <reference path="body-parser/body-parser.d.ts" />
