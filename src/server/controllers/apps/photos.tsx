@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { GirdContainer } from '../../../components/PhotoGrid/Container';
 import { IPhotosRepository } from '../../../server/repositories/Photos';
+import logger from '../../../server/utils/logger';
 
 export default class PhotoAppController {
   photosRepository: IPhotosRepository;
@@ -23,7 +24,7 @@ export default class PhotoAppController {
         });
       })
       .catch(error => {
-        console.error(error);
+        logger.error(error);
         return res.status(500).send({ message: error.message });
       });
   };

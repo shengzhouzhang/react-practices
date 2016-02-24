@@ -15,3 +15,4 @@
 /// <reference path="serve-static/serve-static.d.ts" />
 /// <reference path="express-handlebars/express-handlebars.d.ts" />
 /// <reference path="body-parser/body-parser.d.ts" />
+/// <reference path="winston/winston.d.ts" />

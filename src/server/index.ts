@@ -10,6 +10,7 @@ import APP_ROUTES from '../routes';
 import { Agent } from '../server/repositories/Agent';
 import { PhotosRepository } from '../server/repositories/photos';
 import PhotoAppController from '../server/controllers/apps/photos';
+import logger from '../server/utils/logger';
 
 let agent = new Agent('https://api.flickr.com/services/rest/?', APP_CONFIG.FLICKR_KEY);
 let photosRepository = new PhotosRepository(agent, `flickr.photos.search`);
@@ -26,5 +27,5 @@ server.use(bodyParser.json());
 server.use(APP_ROUTES.PhotoAPP, new PhotoAppController(photosRepository).route);
 
 server.listen(APP_CONFIG.PORT, function () {
-  console.log('Server on %s', APP_CONFIG.PORT);
+  logger.info('Server on %s', APP_CONFIG.PORT);
 });
