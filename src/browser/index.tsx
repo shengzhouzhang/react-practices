@@ -17,3 +17,8 @@ function renderMenuView () {
     document.querySelector('.app-container')
   );
 };
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log('ready');
+  renderMenuView();
+});

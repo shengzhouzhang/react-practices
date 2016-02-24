@@ -16,3 +16,6 @@
 /// <reference path="express-handlebars/express-handlebars.d.ts" />
 /// <reference path="body-parser/body-parser.d.ts" />
 /// <reference path="winston/winston.d.ts" />
+/// <reference path="source-map/source-map.d.ts" />
+/// <reference path="uglify-js/uglify-js.d.ts" />
+/// <reference path="webpack/webpack.d.ts" />

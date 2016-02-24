@@ -1,5 +1,6 @@
 /// <reference path="../../typings/body-parser/body-parser.d.ts"/>
 /// <reference path="../../typings/express-handlebars/express-handlebars.d.ts"/>
+/// <reference path="../../typings/webpack/webpack.d.ts"/>
 
 import * as path from 'path';
 import * as express from 'express';
@@ -26,6 +27,8 @@ server.use(bodyParser.json());
 
 server.use(APP_ROUTES.PhotoAPP, new PhotoAppController(photosRepository).route);
 
-server.listen(APP_CONFIG.PORT, function () {
-  logger.info('Server on %s', APP_CONFIG.PORT);
-});
+export default server;
+
+// server.listen(APP_CONFIG.PORT, function () {
+//   logger.info('Server on %s', APP_CONFIG.PORT);
+// });
