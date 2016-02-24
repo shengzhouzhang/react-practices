@@ -5,7 +5,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
-    './src/browser/index.js'
+    './src/browser/index'
   ],
   output: {
     path: path.resolve(__dirname, "build"),
@@ -22,6 +22,13 @@ module.exports = {
       test: /\.js$/,
       loaders: [ 'react-hot' ],
       exclude: /(node_modules|bower_components)/
+    }, {
+      test: /\.tsx?$/,
+      loaders: [ 'ts-loader' ],
+      exclude: /(node_modules|bower_components)/
     }]
+  },
+  resolve: {
+    extensions: [ '', '.js', '.ts', '.tsx' ]
   }
 };
