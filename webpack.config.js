@@ -4,7 +4,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    'webpack-hot-middleware/client',
     './src/browser/index.js'
   ],
   output: {
@@ -14,15 +14,14 @@ module.exports = {
   },
   devtool: '#source-map',
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
+      loaders: [ 'react-hot' ],
+      exclude: /(node_modules|bower_components)/
     }]
   }
 };

@@ -5,3 +5,5 @@ npm-debug.log
 .env
 specs/**/*.js
 src/**/*.js
+specs/**/*.js.map
+src/**/*.js.map
