@@ -10,7 +10,7 @@ export interface IAgent {
 export class Agent implements IAgent {
   baseUri: string;
 
-  constructor (baseUri: string) {
+  constructor (baseUri: string = '') {
     this.baseUri = baseUri;
   };
 

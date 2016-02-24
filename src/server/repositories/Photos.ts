@@ -18,7 +18,7 @@ export class PhotosRepository implements IPhotosRepository {
   };
 
   public fetchPhotos = (tags: string): Promise<IPhotos> => {
-    return this.agent.request('GET', `&method=${this.path}&tags=${tags}`)
+    return this.agent.request('GET', `&method=${this.path}&tags=${tags}&extras=url_m`)
       .then(entity => this.parse(entity))
       .then(items => {
         return { title: tags, items: items };
@@ -30,7 +30,9 @@ export class PhotosRepository implements IPhotosRepository {
       return _.map(JSON.parse(raw).photos.photo, (item: any) => {
         return {
           name: item.title,
-          imageUrl: `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`
+          imageUrl: item.url_m,
+          height: parseInt(item.height_m),
+          width: parseInt(item.width_m)
         };
       });
     } catch (error) {

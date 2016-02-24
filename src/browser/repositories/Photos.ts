@@ -26,7 +26,7 @@ export class PhotosRepository implements IPhotosRepository {
     return {
       title: entity.title,
       items: _.map(entity.items, (item: any): IPhoto => {
-        return { name: item.name, imageUrl: item.imageUrl };
+        return { name: item.name, imageUrl: item.imageUrl, height: item.height, width: item.width };
       })
     };
   }

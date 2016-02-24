@@ -1,0 +1,16 @@
+
+// $phote-height: 300px;
+
+.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+
+.photo-cover {
+  padding: 2px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #fff;
+  background-size: cover;
+}

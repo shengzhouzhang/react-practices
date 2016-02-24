@@ -6,9 +6,10 @@ import { Agent } from '../browser/repositories/Agent';
 import { PhotosRepository } from '../browser/repositories/Photos';
 import { GirdContainer } from '../components/PhotoGrid/Container';
 
-const BASE_URI = '';
+import './style/main.scss';
+import './style/grid.scss';
 
-let agent = new Agent(BASE_URI);
+let agent = new Agent();
 
 function renderMenuView () {
   let photos = JSON.parse(document.querySelector('.initial-state').innerHTML);
