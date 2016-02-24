@@ -5,7 +5,9 @@
   "author": "Shengzhou Zhang",
   "private": true,
   "scripts": {
-    "build": "gulp build",
+    "build": "tsc",
+    "prestart": "tsc",
+    "start": "node src/server",
     "pretest": "tsc",
     "test": "mocha 'specs/**/*.js'"
   },

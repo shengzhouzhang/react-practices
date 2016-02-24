@@ -23,10 +23,9 @@
     "rewriteTsconfig": true
   },
   "files": [
-    "src/browser/repositories/photos.ts",
+    "src/browser/repositories/Agent.ts",
+    "src/browser/repositories/Photos.ts",
     "src/domains/photo.ts",
-    "src/repositories/Agent.ts",
-    "src/repositories/Photos.ts",
     "src/routes/index.ts",
     "src/server/config/index.ts",
     "src/server/index.ts",
