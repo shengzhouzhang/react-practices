@@ -7,7 +7,7 @@ export function parse (entity: any = {}): IPhotos {
   return {
     title: entity.title,
     items: _.map(entity.items, (item: any): IPhoto => {
-      return { author: item.author, imageUrl: item.imageUrl };
+      return { name: item.name, imageUrl: item.imageUrl };
     })
   };
 };

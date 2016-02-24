@@ -7,13 +7,12 @@ import * as bodyParser from 'body-parser';
 import * as handlebars from 'express-handlebars';
 import APP_CONFIG from './config';
 import APP_ROUTES from '../routes';
-import { Agent } from '../repositories/Agent';
-import { PhotosRepository } from '../repositories/Photos';
-import { parse } from '../server/repositories/photos';
+import { Agent } from '../server/repositories/Agent';
+import { PhotosRepository } from '../server/repositories/photos';
 import PhotoAppController from '../server/controllers/apps/photos';
 
-let agent = new Agent('http://api.flickr.com');
-let photosRepository = new PhotosRepository(agent, '/services/feeds/photos_public.gne?format=json&nojsoncallback=1', parse);
+let agent = new Agent('https://api.flickr.com/services/rest/?', APP_CONFIG.FLICKR_KEY);
+let photosRepository = new PhotosRepository(agent, `flickr.photos.search`);
 
 let server = express();
 

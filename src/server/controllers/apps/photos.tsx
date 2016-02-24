@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { GirdContainer } from '../../../components/PhotoGrid/Container';
-import { IPhotosRepository } from '../../../repositories/Photos';
+import { IPhotosRepository } from '../../../server/repositories/Photos';
 
 export default class PhotoAppController {
   photosRepository: IPhotosRepository;
@@ -12,10 +12,13 @@ export default class PhotoAppController {
   };
 
   route = (req, res) => {
-    this.photosRepository.fetchPhotos()
+    let tag = req.params.tag;
+    if (!tag) { return res.status(400).send({ message: 'missing tag' }); }
+
+    this.photosRepository.fetchPhotos(tag)
       .then(photos => {
         res.render('index', {
-          html: ReactDOMServer.renderToString(<GirdContainer photos={photos} repository={this.photosRepository} />),
+          html: ReactDOMServer.renderToString(<GirdContainer photos={photos} repository={null} />),
           data: JSON.stringify(photos)
         });
       })

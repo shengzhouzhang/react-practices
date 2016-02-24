@@ -1,5 +1,5 @@
 
 export default {
-  PhotoAPP: '/photos',
-  PhotoAPI: '/api/photos'
+  PhotoAPP: '/photos/:tag',
+  PhotoAPI: '/api/photos/:tag'
 };

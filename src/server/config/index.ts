@@ -11,7 +11,4 @@ const CONFIG = {
   TZ: 'Australia/Sydney'
 };
 
-console.log(CONFIG.FLICKR_KEY);
-console.log(CONFIG.FLICKR_SECRET);
-
 export default CONFIG;

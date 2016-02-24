@@ -5,6 +5,6 @@ export interface IPhotos {
 };
 
 export interface IPhoto {
-  author: string;
+  name: string;
   imageUrl: string;
 }

@@ -30,6 +30,7 @@
     "src/routes/index.ts",
     "src/server/config/index.ts",
     "src/server/index.ts",
+    "src/server/repositories/Agent.ts",
     "src/server/repositories/photos.ts",
     "typings/assertion-error/assertion-error.d.ts",
     "typings/bluebird/bluebird.d.ts",

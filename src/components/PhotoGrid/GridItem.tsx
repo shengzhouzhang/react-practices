@@ -10,7 +10,7 @@ export class Photo extends React.Component<IPhotoProps, {}> {
     return (
       <div className="grid-item">
         <img className="photo-cover" src={ this.props.imageUrl } />
-        <span className="author">{ this.props.author }</span>
+        <span className="name">{ this.props.name }</span>
       </div>
     );
   }

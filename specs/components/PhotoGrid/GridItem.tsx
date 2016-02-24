@@ -11,8 +11,8 @@ describe('Menu Item Component', () => {
   const TEST_IMAGE_URL = 'TEST_IMAGE_URL';
 
   it("should render name and image", () => {
-    let thisComponent = shallow(<Photo author={TEST_NAME} imageUrl={TEST_IMAGE_URL} />);
+    let thisComponent = shallow(<Photo name={TEST_NAME} imageUrl={TEST_IMAGE_URL} />);
     expect(thisComponent.contains(<img className="photo-cover" src={ TEST_IMAGE_URL } />));
-    expect(thisComponent.contains(<span className="author">{ TEST_NAME }</span>));
+    expect(thisComponent.contains(<span className="name">{ TEST_NAME }</span>));
   });
 });
