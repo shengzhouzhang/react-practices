@@ -29,6 +29,7 @@
     "src/domains/photo.ts",
     "src/routes/index.ts",
     "src/server/config/index.ts",
+    "src/server/controllers/Default.ts",
     "src/server/index.ts",
     "src/server/repositories/Agent.ts",
     "src/server/repositories/Photos-1.ts",
@@ -61,6 +62,6 @@
     "src/components/PhotoGrid/Container.tsx",
     "src/components/PhotoGrid/Grid.tsx",
     "src/components/PhotoGrid/GridItem.tsx",
-    "src/server/controllers/apps/photos.tsx"
+    "src/server/controllers/apps/Photos.tsx"
   ]
 }
