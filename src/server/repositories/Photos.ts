@@ -18,7 +18,7 @@ export class PhotosRepository implements IPhotosRepository {
   };
 
   public fetchPhotos = (tags: string): Promise<IPhotos> => {
-    return this.agent.request('GET', `&method=${this.path}&tags=${tags}&extras=url_m`)
+    return this.agent.request('GET', `&method=${this.path}&text=${tags}&sort=relevance&extras=url_m`)
       .then(entity => this.parse(entity))
       .then(items => {
         return { title: tags, items: items };
