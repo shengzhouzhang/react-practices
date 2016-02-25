@@ -29,7 +29,7 @@
     "src/domains/photo.ts",
     "src/routes/index.ts",
     "src/server/config/index.ts",
-    "src/server/controllers/Default.ts",
+    "src/server/controllers/interface.ts",
     "src/server/index.ts",
     "src/server/repositories/Agent.ts",
     "src/server/repositories/Photos.ts",

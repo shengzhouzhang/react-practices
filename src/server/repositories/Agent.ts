@@ -23,9 +23,6 @@ export class Agent implements IAgent {
       uri: `${this.baseUri}${path}&api_key=${this.apiKey}&format=json&nojsoncallback=1`,
       headers: _.merge({ 'Content-Type': 'application/json' }, headers)
     };
-    
-    logger.info('request', JSON.stringify(options));
-
     return new Promise<any>((resolve, reject) => {
       _request(options, (error: any, response: any, body: any) => {
         if (error) {

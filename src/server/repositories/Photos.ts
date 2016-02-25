@@ -3,38 +3,51 @@ import * as _ from 'lodash';
 import * as Promise from 'bluebird';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import { IAgent } from '../../server/repositories/Agent';
+import logger from '../../server/utils/logger';
 
 export interface IPhotosRepository {
-  fetchPhotos(tags: string): Promise<IPhotos>;
+  search(tags: string): Promise<IPhotos>;
+  getRecent(): Promise<IPhotos>;
 };
 
 export class PhotosRepository implements IPhotosRepository {
   agent: IAgent;
-  path: string;
 
-  constructor (agent: IAgent, path: string) {
+  constructor (agent: IAgent) {
     this.agent = agent;
-    this.path = path;
   };
 
-  public fetchPhotos = (tags: string): Promise<IPhotos> => {
-    return this.agent.request('GET', `&method=${this.path}&text=${tags}&sort=relevance&extras=url_m`)
+  search = (tags: string = ''): Promise<IPhotos> => {
+    logger.info('search', tags);
+    return this.agent.request('GET', `&method=flickr.photos.search&text=${tags}&sort=relevance&extras=url_m`)
       .then(entity => this.parse(entity))
       .then(items => {
         return { title: tags, items: items };
       });
   };
 
-  private parse (raw: any = {}): Array<IPhoto> {
-    try {
-      return _.map(JSON.parse(raw).photos.photo, (item: any) => {
-        return {
-          name: item.title,
-          imageUrl: item.url_m,
-          height: parseInt(item.height_m),
-          width: parseInt(item.width_m)
-        };
+  getRecent = (): Promise<IPhotos> => {
+    logger.info('getRecent');
+    return this.agent.request('GET', `&method=flickr.photos.getRecent&extras=url_m`)
+      .then(entity => this.parse(entity))
+      .then(items => {
+        return { title: null, items: items };
       });
+  };
+
+  parse (raw: any = {}): Array<IPhoto> {
+    try {
+      return _.chain(JSON.parse(raw).photos.photo)
+        .map((item: any) => {
+          return {
+            name: item.title,
+            imageUrl: item.url_m,
+            width: parseInt(item.width_m),
+            height: parseInt(item.height_m)
+          };
+        })
+        .filter(photos => photos.width && photos.height)
+        .value();
     } catch (error) {
       throw new Error(`${error.message}: ${raw}`)
     }

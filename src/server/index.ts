@@ -11,11 +11,10 @@ import APP_ROUTES from '../routes';
 import { Agent } from '../server/repositories/Agent';
 import { PhotosRepository } from '../server/repositories/Photos';
 import PhotoAppController from '../server/controllers/apps/Photos';
-import DefaultController from '../server/controllers/default';
 import logger from '../server/utils/logger';
 
 let agent = new Agent('https://api.flickr.com/services/rest/?', APP_CONFIG.FLICKR_KEY);
-let photosRepository = new PhotosRepository(agent, `flickr.photos.search`);
+let photosRepository = new PhotosRepository(agent);
 
 let server = express();
 
@@ -26,7 +25,6 @@ server.set('views', path.join(__dirname, 'templates'));
 
 server.use(bodyParser.json());
 
-server.use(APP_ROUTES.PhotoAPP, new PhotoAppController(photosRepository).route);
-server.use('*', new DefaultController(APP_ROUTES.PhotoAPP).route);
+server.use(APP_ROUTES.PhotoAPP, new PhotoAppController(photosRepository).getRouter());
 
 export default server;
