@@ -6,9 +6,6 @@ import { Agent } from '../browser/repositories/Agent';
 import { PhotosRepository } from '../browser/repositories/Photos';
 import { GirdContainer } from '../components/PhotoGrid/Container';
 
-import './style/main.scss';
-import './style/grid.scss';
-
 let agent = new Agent();
 
 function renderMenuView () {

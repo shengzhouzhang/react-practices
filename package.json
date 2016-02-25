@@ -9,7 +9,7 @@
     "start": "node index.js",
     "pretest": "./node_modules/.bin/tsc",
     "test": "mocha 'specs/**/*.js'",
-    "postinstall": "webpack"
+    "postinstall": "gulp build"
   },
   "dependencies": {
     "bluebird": "^3.3.1",
@@ -20,6 +20,8 @@
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "flickrapi": "^0.4.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-util": "^3.0.7",
     "jss": "^3.3.0",
     "lodash": "^4.5.0",
     "react": "^0.14.7",
@@ -27,6 +29,7 @@
     "react-jss": "^2.0.1",
     "redux": "^3.3.1",
     "request": "^2.65.0",
+    "run-sequence": "^1.1.5",
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.2",
     "webpack": "^1.12.14",
