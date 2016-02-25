@@ -3,11 +3,9 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { IAdjustedPhoto, Photo } from '../../components/PhotoGrid/GridItem';
 import { IPhotos, IPhoto } from '../../domains/photo';
+import CONFIG from '../../browser/config';
 
 export interface IGridProps extends IPhotos, React.Props<any> {};
-
-const DEFAULT_WIDTH = 1200;
-const DEFAULT_MARGIN = 2;
 
 export class Grid extends React.Component<IGridProps, any> {
 
@@ -16,8 +14,8 @@ export class Grid extends React.Component<IGridProps, any> {
       return (<Photo key={`grid-item-${index}`} {...item} />)
     });
     let style = {
-      width: DEFAULT_WIDTH,
-      padding: DEFAULT_MARGIN
+      width: CONFIG.SCREEN_WIDTH,
+      padding: CONFIG.PHOTO_MARGIN
     };
     return (
       <div className="photos">
@@ -31,32 +29,27 @@ export class Grid extends React.Component<IGridProps, any> {
     let rowWidth = 0;
     let index = 0;
     let adjustedIndex = 0;
-    let numberOfPhotosInRow = 0;
     let adjustedPhotos = [];
     for (; index < photos.length; index++) {
       let photo = photos[index];
       rowWidth += photo.width || 500;
-      if (rowWidth >= DEFAULT_WIDTH) {
-        let adjustedRowWidth = 0;
+      if (rowWidth >= CONFIG.SCREEN_WIDTH) {
         for (; adjustedIndex <= index; adjustedIndex++) {
           let photo = photos[adjustedIndex];
-          let rate = DEFAULT_WIDTH / rowWidth;
-          let adjustedWidth = photo.width * rate - DEFAULT_MARGIN * 2;
+          let rate = CONFIG.SCREEN_WIDTH / rowWidth;
           adjustedPhotos.push({
             name: photo.name,
             imageUrl: photo.imageUrl,
             width: photo.width,
             height: photo.height,
-            adjustedWidth: adjustedWidth,
-            adjustedHeight: 200,
-            margin: DEFAULT_MARGIN
+            adjustedWidth: photo.width * rate - CONFIG.PHOTO_MARGIN * 2,
+            adjustedHeight: CONFIG.PHOTO_DEFAULT_HEIGHT,
+            margin: CONFIG.PHOTO_MARGIN
           });
-          adjustedRowWidth += adjustedWidth;
         }
         rowWidth = 0;
       }
     }
-
     return adjustedPhotos;
   };
 };

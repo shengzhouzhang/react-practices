@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import { IPhoto } from '../../domains/photo';
+import CONFIG from '../../browser/config';
 
 export interface IAdjustedPhoto extends IPhoto, React.Props<any> {
   adjustedWidth?: number;
@@ -13,8 +14,8 @@ export interface IPhotoProps extends IAdjustedPhoto, React.Props<any> {};
 export class Photo extends React.Component<IPhotoProps, {}> {
 
   static defaultProps = {
-    width: '300px',
-    height: '300px'
+    width: CONFIG.PHOTO_DEFAULT_WIDTH,
+    height: CONFIG.PHOTO_DEFAULT_HEIGHT
   };
 
   render () {
