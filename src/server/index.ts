@@ -9,7 +9,7 @@ import * as handlebars from 'express-handlebars';
 import APP_CONFIG from './config';
 import APP_ROUTES from '../routes';
 import { Agent } from '../server/repositories/Agent';
-import { PhotosRepository } from '../server/repositories/Photos-1';
+import { PhotosRepository } from '../server/repositories/Photos';
 import PhotoAppController from '../server/controllers/apps/Photos';
 import DefaultController from '../server/controllers/default';
 import logger from '../server/utils/logger';

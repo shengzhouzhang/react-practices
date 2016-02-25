@@ -32,7 +32,7 @@
     "src/server/controllers/Default.ts",
     "src/server/index.ts",
     "src/server/repositories/Agent.ts",
-    "src/server/repositories/Photos-1.ts",
+    "src/server/repositories/Photos.ts",
     "src/server/utils/logger.ts",
     "typings/assertion-error/assertion-error.d.ts",
     "typings/bluebird/bluebird.d.ts",

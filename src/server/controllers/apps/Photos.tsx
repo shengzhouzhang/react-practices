@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { GirdContainer } from '../../../components/PhotoGrid/Container';
-import { IPhotosRepository } from '../../../server/repositories/Photos-1';
+import { IPhotosRepository } from '../../../server/repositories/Photos';
 import logger from '../../../server/utils/logger';
 
 export default class PhotoAppController {
