@@ -2,7 +2,7 @@
 
 import * as dotenv from 'dotenv';
 
-dotenv.load();
+if (process.env.DOTENV) { dotenv.load(); }
 
 const CONFIG = {
   PORT: 8080,
