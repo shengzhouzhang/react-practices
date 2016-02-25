@@ -1,16 +1,14 @@
 
-// $phote-height: 300px;
+$photos-margin: 50px;
 
 .photo-list {
   display: flex;
   flex-wrap: wrap;
-  width: 100vw;
+  background-color: #fff;
+  margin: $photos-margin auto;
 }
 
 .photo-cover {
-  padding: 2px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #fff;
+  background: no-repeat center center;
   background-size: cover;
 }

@@ -2,7 +2,13 @@
 import * as React from 'react';
 import { IPhoto } from '../../domains/photo';
 
-export interface IPhotoProps extends IPhoto, React.Props<any> {};
+export interface IAdjustedPhoto extends IPhoto, React.Props<any> {
+  adjustedWidth?: number;
+  adjustedHeight?: number;
+  margin?: number;
+};
+
+export interface IPhotoProps extends IAdjustedPhoto, React.Props<any> {};
 
 export class Photo extends React.Component<IPhotoProps, {}> {
 
@@ -13,8 +19,9 @@ export class Photo extends React.Component<IPhotoProps, {}> {
 
   render () {
     let style = {
-      width: this.props.width,
-      height: this.props.height,
+      width: this.props.adjustedWidth,
+      height: this.props.adjustedHeight,
+      margin: this.props.margin,
       backgroundImage: `url("${this.props.imageUrl}")`
     };
     return (
