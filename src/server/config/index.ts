@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 if (process.env.DOTENV) { dotenv.load(); }
 
 const CONFIG = {
-  PORT: 8080,
+  PORT: parseInt(process.env.PORT),
   FLICKR_KEY: process.env.FLICKR_KEY,
   TZ: 'Australia/Sydney'
 };
