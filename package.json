@@ -12,15 +12,12 @@
   "dependencies": {
     "bluebird": "^3.3.1",
     "body-parser": "^1.15.0",
-    "dotenv": "^2.0.0",
-    "enzyme": "^2.0.0",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-rimraf": "^0.2.0",
     "gulp-sass": "^2.2.0",
     "gulp-typescript": "^2.12.0",
-    "gulp-webpack": "^1.5.0",
     "immutable": "^3.7.6",
     "lodash": "^4.5.0",
     "react": "^0.14.7",
@@ -30,10 +27,12 @@
     "run-sequence": "^1.1.5",
     "rx": "^4.0.8",
     "seamless-immutable": "^5.0.1",
+    "webpack-stream": "^3.1.0",
     "winston": "^2.1.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
     "enzyme": "^2.0.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
