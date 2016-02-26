@@ -1,11 +1,11 @@
 
 var path = require('path');
 var express = require('express');
-var server = require('./src/server').default;
-var appConfig = require('./src/server/config').default;
-var logger = require ('./src/server/utils/logger').default;
+var server = require('./dist/src/server').default;
+var appConfig = require('./dist/src/server/config').default;
+var logger = require ('./dist/src/server/utils/logger').default;
 
-server.use('/static/', express.static(path.join(__dirname, 'build')));
+server.use('/static/', express.static(path.join(__dirname, 'dist', 'assets')));
 
 server.listen(appConfig.PORT, function (err) {
   if (err) { return logger.error(err); }

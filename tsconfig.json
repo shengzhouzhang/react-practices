@@ -38,6 +38,7 @@
     "typings/bluebird/bluebird.d.ts",
     "typings/body-parser/body-parser.d.ts",
     "typings/chai/chai.d.ts",
+    "typings/deep-freeze/deep-freeze.d.ts",
     "typings/dotenv/dotenv.d.ts",
     "typings/enzyme/enzyme.d.ts",
     "typings/express-handlebars/express-handlebars.d.ts",
