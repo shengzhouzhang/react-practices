@@ -1,7 +1,6 @@
 
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
-import * as Immutable from 'immutable';
 import { IPhotos } from '../../domains/photo';
 import { IAgent } from '../../browser/repositories/Agent';
 import * as Utils from '../../browser/utils/photos';

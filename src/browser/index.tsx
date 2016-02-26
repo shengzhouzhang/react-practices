@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as Immutable from 'immutable';
 import { ROUTES } from '../config';
 import { Agent } from '../browser/repositories/Agent';
 import { PhotosRepository } from '../browser/repositories/Photos';

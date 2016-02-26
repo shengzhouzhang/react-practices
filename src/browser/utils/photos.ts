@@ -1,13 +1,9 @@
 
-import * as Immutable from 'immutable';
-import { IPhotos, IPhoto } from '../../domains/photo';
+import { Photos, Photo } from '../../domains/photo';
 
-export function parsePhotos (entity: any = {}): IPhotos {
-  let photos = _.map(entity.items, (item: any): IPhoto => {
-    return { name: item.name, imageUrl: item.imageUrl, height: item.height, width: item.width };
-  });
-  return {
-    title: entity.title,
-    items: Immutable.List(photos)
-  };
+export function parsePhotos (entity: any = {}): Photos {
+  return new Photos(
+    entity.title,
+    _.map(entity.items, (item: any) => new Photo(item.name, item.imageUrl, item.width, item.height))
+  );
 }
