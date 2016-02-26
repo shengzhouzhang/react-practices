@@ -30,7 +30,7 @@ export class GirdContainer extends React.Component<IGirdContainerProps, IGirdCon
   componentDidMount () {
   };
 
-  private fetchPhotos = () => {
+  fetchPhotos = () => {
     return this.repository.fetchPhotos().then(photos => {
       this.setState({
         title: photos.title,
