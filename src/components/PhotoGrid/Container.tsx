@@ -1,7 +1,8 @@
 
 import * as _ from 'lodash';
 import * as React from 'react';
-import { IPhotos } from '../../domains/photo';
+import * as Immutable from 'immutable';
+import { IPhotos, IPhoto } from '../../domains/photo';
 import { Grid } from '../../components/PhotoGrid/Grid';
 import { IPhotosRepository } from '../../browser/repositories/Photos';
 
@@ -11,7 +12,7 @@ export interface IGirdContainerProps extends React.Props<any> {
 };
 
 export interface IGirdContainerState {
-  photos?: IPhotos;
+  photos: Immutable.List<IPhoto>;
 };
 
 export class GirdContainer extends React.Component<IGirdContainerProps, IGirdContainerState> {
@@ -20,20 +21,19 @@ export class GirdContainer extends React.Component<IGirdContainerProps, IGirdCon
   constructor (props) {
     super(props);
     this.repository = props.repository;
-    this.state = { photos: this.props.photos };
+    this.state = { photos: Immutable.List(this.props.photos.items) };
   };
 
   render () {
-    return (<Grid {...this.state.photos} />);
+    return (<Grid title={this.props.photos.title} items={this.state.photos} />);
   };
 
   componentDidMount () {
-    this.fetchPhotos();
   };
 
   private fetchPhotos = () => {
     return this.repository.fetchPhotos().then(photos => {
-      this.setState({ photos: photos });
+      this.setState({ photos: Immutable.List(photos.items) });
     });
   }
 };

@@ -1,7 +1,9 @@
 
+import * as Immutable from 'immutable';
+
 export interface IPhotos {
   title : string;
-  items : Array<IPhoto>;
+  items : Immutable.List<IPhoto>;
 };
 
 export interface IPhoto {

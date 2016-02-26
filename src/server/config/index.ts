@@ -2,7 +2,7 @@
 
 import * as dotenv from 'dotenv';
 
-if (process.env.DOTENV) { dotenv.load(); }
+dotenv.load();
 
 const CONFIG = {
   PORT: parseInt(process.env.PORT),
@@ -10,5 +10,9 @@ const CONFIG = {
   FLICKR_KEY: process.env.FLICKR_KEY,
   TZ: 'Australia/Sydney'
 };
+
+console.info('PORT', CONFIG.PORT);
+console.info('DEFAULT_SEARCH', CONFIG.DEFAULT_SEARCH);
+console.info('FLICKR_KEY', CONFIG.FLICKR_KEY);
 
 export default CONFIG;

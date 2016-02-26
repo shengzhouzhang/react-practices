@@ -1,6 +1,7 @@
 
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
+import * as Immutable from 'immutable';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import { IAgent } from '../../browser/repositories/Agent';
 
@@ -23,11 +24,12 @@ export class PhotosRepository implements IPhotosRepository {
   };
 
   private parse (entity: any = {}): IPhotos {
+    let photos = _.map(entity.items, (item: any): IPhoto => {
+      return { name: item.name, imageUrl: item.imageUrl, height: item.height, width: item.width };
+    });
     return {
       title: entity.title,
-      items: _.map(entity.items, (item: any): IPhoto => {
-        return { name: item.name, imageUrl: item.imageUrl, height: item.height, width: item.width };
-      })
+      items: Immutable.List(photos)
     };
   }
 };

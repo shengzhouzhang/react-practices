@@ -1,6 +1,8 @@
+///<reference path='../../../node_modules/immutable/dist/immutable.d.ts'/>
 
 import * as _ from 'lodash';
 import * as React from 'react';
+import * as Immutable from 'immutable';
 import { IAdjustedPhoto, Photo } from '../../components/PhotoGrid/GridItem';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import CONFIG from '../../browser/config';
@@ -24,18 +26,18 @@ export class Grid extends React.Component<IGridProps, any> {
     );
   };
 
-  adjustSize = (photos: Array<IPhoto>): Array<IAdjustedPhoto> => {
+  adjustSize = (photos: Immutable.List<IPhoto>): Array<IAdjustedPhoto> => {
 
     let rowWidth = 0;
     let index = 0;
     let adjustedIndex = 0;
     let adjustedPhotos = [];
-    for (; index < photos.length; index++) {
-      let photo = photos[index];
+    for (; index < photos.size; index++) {
+      let photo = photos.get(index);
       rowWidth += photo.width || 500;
       if (rowWidth >= CONFIG.SCREEN_WIDTH) {
         for (; adjustedIndex <= index; adjustedIndex++) {
-          let photo = photos[adjustedIndex];
+          let photo = photos.get(adjustedIndex);
           let rate = CONFIG.SCREEN_WIDTH / rowWidth;
           adjustedPhotos.push({
             name: photo.name,

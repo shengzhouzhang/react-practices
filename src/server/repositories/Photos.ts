@@ -1,6 +1,7 @@
 
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
+import * as Immutable from 'immutable';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import { IAgent } from '../../server/repositories/Agent';
 import logger from '../../server/utils/logger';
@@ -35,9 +36,9 @@ export class PhotosRepository implements IPhotosRepository {
       });
   };
 
-  parse (raw: any = {}): Array<IPhoto> {
+  parse (raw: any = {}): Immutable.List<IPhoto> {
     try {
-      return _.chain(JSON.parse(raw).photos.photo)
+      let photos = _.chain(JSON.parse(raw).photos.photo)
         .map((item: any) => {
           return {
             name: item.title,
@@ -48,6 +49,7 @@ export class PhotosRepository implements IPhotosRepository {
         })
         .filter(photos => photos.width && photos.height)
         .value();
+      return Immutable.List(photos);
     } catch (error) {
       throw new Error(`${error.message}: ${raw}`)
     }
