@@ -1,8 +1,4 @@
 
-import * as dotenv from 'dotenv';
-
-dotenv.load();
-
 const CONFIG = {
   PORT: parseInt(process.env.PORT),
   DEFAULT_SEARCH: process.env.DEFAULT_SEARCH,
