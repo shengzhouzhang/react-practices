@@ -9,17 +9,28 @@ import CONFIG from '../../browser/config';
 const DEFAULT_SCREEN_WIDTH = CONFIG.DEFAULT_SCREEN_WIDTH;
 const DEFAULT_PHOTO_MARGIN = CONFIG.DEFAULT_PHOTO_MARGIN;
 const DEFAULT_PHOTO_HEIGHT = CONFIG.DEFAULT_PHOTO_HEIGHT;
+const DEFAULT_SCREEN_MARGIN = 100;
 
 export interface IGridProps extends IPhotos, React.Props<any> {};
 
-export class Grid extends React.Component<IGridProps, any> {
+export interface IGridState {
+  screenWidth: number;
+};
+
+export class Grid extends React.Component<IGridProps, IGridState> {
+
+  constructor (props) {
+    super(props);
+    this.state = { screenWidth: DEFAULT_SCREEN_WIDTH };
+  }
 
   render () {
-    let items = _.map(this.adjustSize(this.props.items), (item, index) => {
-      return (<Photo key={`grid-item-${index}`} {...item} />)
+    let resizedPhotos = this.resizePhotos(this.props.items, this.state.screenWidth);
+    let items = _.map(resizedPhotos, (resizedPhoto, index) => {
+        return (<Photo key={`grid-item-${index}`} {...resizedPhoto} />)
     });
     let style = {
-      width: DEFAULT_SCREEN_WIDTH,
+      width: this.state.screenWidth,
       padding: DEFAULT_PHOTO_MARGIN
     };
     return (
@@ -29,7 +40,21 @@ export class Grid extends React.Component<IGridProps, any> {
     );
   };
 
-  adjustSize = (photos: Immutable.List<IPhoto>): Array<IAdjustedPhoto> => {
+  componentDidMount () {
+    this.resize();
+    window.addEventListener('resize', this.resize);
+  };
+
+  componentWillUnMount () {
+    window.removeEventListener('resize', this.resize);
+  };
+
+  resize = () => {
+    console.log('resizing');
+    this.setState({ screenWidth: window.innerWidth - DEFAULT_SCREEN_MARGIN });
+  };
+
+  resizePhotos = (photos: Immutable.List<IPhoto>, screenWidth: number): Array<IAdjustedPhoto> => {
 
     let rowWidth = 0;
     let index = 0;
@@ -38,10 +63,10 @@ export class Grid extends React.Component<IGridProps, any> {
     for (; index < photos.size; index++) {
       let photo = photos.get(index);
       rowWidth += photo.width || 500;
-      if (rowWidth >= DEFAULT_SCREEN_WIDTH) {
+      if (rowWidth >= screenWidth) {
         for (; adjustedIndex <= index; adjustedIndex++) {
           let photo = photos.get(adjustedIndex);
-          let rate = DEFAULT_SCREEN_WIDTH / rowWidth;
+          let rate = screenWidth / rowWidth;
           adjustedPhotos.push({
             name: photo.name,
             imageUrl: photo.imageUrl,
