@@ -3,9 +3,6 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: [
-    './dist/src/browser/index'
-  ],
   output: {
     path: path.resolve(__dirname, "dist", "assets"),
     publicPath: "/assets/",
