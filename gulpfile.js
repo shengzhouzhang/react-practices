@@ -5,7 +5,6 @@ var sass = require('gulp-sass');
 var webpack = require('webpack-stream');
 var ts = require('gulp-typescript');
 var runSequence = require('run-sequence');
-var webpackConfig = require('./webpack.config');
 
 gulp.task('clean', function() {
  return gulp.src([ 'src/**/*.js', 'specs/**/*.js', 'src/**/*.js.map', 'dist' ], { read: false })
@@ -25,7 +24,10 @@ gulp.task('sass', function () {
 
 gulp.task("webpack", function (callback) {
   return gulp.src('./dist/src/browser/index.js')
-  .pipe(webpack(webpackConfig))
+  .pipe(webpack({
+    devtool: '#source-map',
+    output: { filename: "bundle.js" }
+  }))
   .pipe(gulp.dest('dist/assets'));
 });
 
