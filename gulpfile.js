@@ -2,9 +2,8 @@
 var gulp = require("gulp");
 var rimraf = require('gulp-rimraf');
 var sass = require('gulp-sass');
-var gutil = require("gulp-util");
+var webpack = require('gulp-webpack');
 var ts = require('gulp-typescript');
-var webpack = require('webpack');
 var runSequence = require('run-sequence');
 var webpackConfig = require('./webpack.config');
 
@@ -24,12 +23,10 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./dist/assets'));
 });
 
-gulp.task("browser", function (callback) {
-  webpack(webpackConfig, function (err, stats) {
-    if(err) throw new gutil.PluginError("webpack", err);
-    gutil.log("[webpack]", stats.toString());
-    callback();
-  });
+gulp.task("webpack", function (callback) {
+  return gulp.src('./dist/src/browser/index.js')
+  .pipe(webpack(webpackConfig))
+  .pipe(gulp.dest('dist/assets'));
 });
 
 gulp.task('typescript', function () {
@@ -40,5 +37,5 @@ gulp.task('typescript', function () {
 });
 
 gulp.task('build', function() {
-  runSequence('clean', [ 'html', 'sass', 'typescript' ], 'browser');
+  runSequence('clean', [ 'html', 'sass', 'typescript' ], 'webpack');
 });
