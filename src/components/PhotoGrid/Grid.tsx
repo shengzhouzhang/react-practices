@@ -2,14 +2,17 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as Immutable from 'immutable';
+import * as Rx from 'rx';
 import { IAdjustedPhoto, Photo } from '../../components/PhotoGrid/GridItem';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import CONFIG from '../../browser/config';
+
 
 const DEFAULT_SCREEN_WIDTH = CONFIG.DEFAULT_SCREEN_WIDTH;
 const DEFAULT_PHOTO_MARGIN = CONFIG.DEFAULT_PHOTO_MARGIN;
 const DEFAULT_PHOTO_HEIGHT = CONFIG.DEFAULT_PHOTO_HEIGHT;
 const DEFAULT_SCREEN_MARGIN = 100;
+const MINIMUM_SCREEN_WIDTH = 200;
 
 export interface IGridProps extends IPhotos, React.Props<any> {};
 
@@ -42,16 +45,28 @@ export class Grid extends React.Component<IGridProps, IGridState> {
 
   componentDidMount () {
     this.resize();
-    window.addEventListener('resize', this.resize);
+    this.addResizeObservable();
   };
 
   componentWillUnMount () {
-    window.removeEventListener('resize', this.resize);
+  };
+
+  addResizeObservable = () => {
+
+    Rx.Observable.fromEvent(window, 'resize')
+      .map(event => { return window.innerWidth; })
+      .debounce(200)
+      .distinctUntilChanged()
+      .subscribe(this.resize);
   };
 
   resize = () => {
-    console.log('resizing');
-    this.setState({ screenWidth: window.innerWidth - DEFAULT_SCREEN_MARGIN });
+    this.setState({
+      screenWidth: _.max([
+        window.innerWidth - DEFAULT_SCREEN_MARGIN,
+        MINIMUM_SCREEN_WIDTH
+      ])
+    });
   };
 
   resizePhotos = (photos: Immutable.List<IPhoto>, screenWidth: number): Array<IAdjustedPhoto> => {
