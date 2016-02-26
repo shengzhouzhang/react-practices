@@ -6,6 +6,10 @@ import { IAdjustedPhoto, Photo } from '../../components/PhotoGrid/GridItem';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import CONFIG from '../../browser/config';
 
+const DEFAULT_SCREEN_WIDTH = CONFIG.DEFAULT_SCREEN_WIDTH;
+const DEFAULT_PHOTO_MARGIN = CONFIG.DEFAULT_PHOTO_MARGIN;
+const DEFAULT_PHOTO_HEIGHT = CONFIG.DEFAULT_PHOTO_HEIGHT;
+
 export interface IGridProps extends IPhotos, React.Props<any> {};
 
 export class Grid extends React.Component<IGridProps, any> {
@@ -15,8 +19,8 @@ export class Grid extends React.Component<IGridProps, any> {
       return (<Photo key={`grid-item-${index}`} {...item} />)
     });
     let style = {
-      width: CONFIG.SCREEN_WIDTH,
-      padding: CONFIG.PHOTO_MARGIN
+      width: DEFAULT_SCREEN_WIDTH,
+      padding: DEFAULT_PHOTO_MARGIN
     };
     return (
       <div className="photos">
@@ -34,18 +38,18 @@ export class Grid extends React.Component<IGridProps, any> {
     for (; index < photos.size; index++) {
       let photo = photos.get(index);
       rowWidth += photo.width || 500;
-      if (rowWidth >= CONFIG.SCREEN_WIDTH) {
+      if (rowWidth >= DEFAULT_SCREEN_WIDTH) {
         for (; adjustedIndex <= index; adjustedIndex++) {
           let photo = photos.get(adjustedIndex);
-          let rate = CONFIG.SCREEN_WIDTH / rowWidth;
+          let rate = DEFAULT_SCREEN_WIDTH / rowWidth;
           adjustedPhotos.push({
             name: photo.name,
             imageUrl: photo.imageUrl,
             width: photo.width,
             height: photo.height,
-            adjustedWidth: photo.width * rate - CONFIG.PHOTO_MARGIN * 2,
-            adjustedHeight: CONFIG.PHOTO_DEFAULT_HEIGHT,
-            margin: CONFIG.PHOTO_MARGIN
+            adjustedWidth: photo.width * rate - DEFAULT_PHOTO_MARGIN * 2,
+            adjustedHeight: DEFAULT_PHOTO_HEIGHT,
+            margin: DEFAULT_PHOTO_MARGIN
           });
         }
         rowWidth = 0;
