@@ -3,8 +3,8 @@ import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as handlebars from 'express-handlebars';
-import APP_CONFIG from './config';
-import APP_ROUTES from '../routes';
+import { ROUTES } from '../config';
+import APP_CONFIG from '../server/config';
 import { Agent } from '../server/repositories/Agent';
 import { PhotosRepository } from '../server/repositories/Photos';
 import PhotoAppController from '../server/controllers/apps/Photos';
@@ -22,6 +22,6 @@ server.set('views', path.join(__dirname, 'templates'));
 
 server.use(bodyParser.json());
 
-server.use(APP_ROUTES.PhotoAPP, new PhotoAppController(photosRepository).getRouter());
+server.use(ROUTES.PhotoAPP, new PhotoAppController(photosRepository).getRouter());
 
 export default server;
