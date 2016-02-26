@@ -1,11 +1,8 @@
 
 var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, "dist", "assets"),
-    publicPath: "/assets/",
     filename: "bundle.js"
   },
   devtool: '#source-map',
