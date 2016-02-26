@@ -13,6 +13,8 @@ const DEFAULT_PHOTO_MARGIN = CONFIG.DEFAULT_PHOTO_MARGIN;
 const DEFAULT_PHOTO_HEIGHT = CONFIG.DEFAULT_PHOTO_HEIGHT;
 const DEFAULT_SCREEN_MARGIN = 100;
 const MINIMUM_SCREEN_WIDTH = 200;
+const MINIMUM_PHOTO_HEIGHT = 220;
+const MAXIMUM_PHOTO_HEIGHT = 280;
 
 export interface IGridProps extends IPhotos, React.Props<any> {};
 
@@ -72,29 +74,43 @@ export class Grid extends React.Component<IGridProps, IGridState> {
   resizePhotos = (photos: Immutable.List<IPhoto>, screenWidth: number): Array<IAdjustedPhoto> => {
 
     let rowWidth = 0;
-    let index = 0;
-    let adjustedIndex = 0;
     let adjustedPhotos = [];
-    for (; index < photos.size; index++) {
+    let photosInRow = [];
+    for (let index = 0; index < photos.size; index++) {
       let photo = photos.get(index);
-      rowWidth += photo.width || 500;
+      rowWidth += photo.width;
+      photosInRow.push(photos.get(index));
       if (rowWidth >= screenWidth) {
-        for (; adjustedIndex <= index; adjustedIndex++) {
-          let photo = photos.get(adjustedIndex);
-          let rate = screenWidth / rowWidth;
-          adjustedPhotos.push({
-            name: photo.name,
-            imageUrl: photo.imageUrl,
-            width: photo.width,
-            height: photo.height,
-            adjustedWidth: photo.width * rate - DEFAULT_PHOTO_MARGIN * 2,
-            adjustedHeight: DEFAULT_PHOTO_HEIGHT,
-            margin: DEFAULT_PHOTO_MARGIN
-          });
-        }
+        adjustedPhotos = [
+          ...adjustedPhotos,
+          ...this.resizePhotosInRow(Immutable.List(photosInRow), screenWidth)
+        ];
         rowWidth = 0;
+        photosInRow = [];
       }
     }
     return adjustedPhotos;
+  };
+
+  resizePhotosInRow = (photoList: Immutable.List<IPhoto>, screenWidth: number): Array<IAdjustedPhoto> => {
+
+    let photos = photoList.toJS();
+    let totalWidth = _.sumBy(photos, (photo: IPhoto) => photo.width);
+    let rate = screenWidth / totalWidth;
+    let minHeight = _.minBy(photos, (photo: IPhoto) => photo.height).height * rate - DEFAULT_PHOTO_MARGIN * 2;
+
+    return _.map(photos, (photo: IPhoto) => {
+      return {
+        name: photo.name,
+        imageUrl: photo.imageUrl,
+        width: photo.width,
+        height: photo.height,
+        adjustedWidth: photo.width * rate - DEFAULT_PHOTO_MARGIN * 2,
+        adjustedHeight: minHeight > MINIMUM_PHOTO_HEIGHT ?
+          minHeight < MAXIMUM_PHOTO_HEIGHT ? minHeight : MAXIMUM_PHOTO_HEIGHT :
+          MINIMUM_PHOTO_HEIGHT,
+        margin: DEFAULT_PHOTO_MARGIN
+      };
+    });
   };
 };
