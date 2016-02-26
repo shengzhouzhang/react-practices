@@ -1,19 +1,15 @@
 
 import * as _ from 'lodash';
 import * as React from 'react';
-import * as Immutable from 'immutable';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import { Grid } from '../../components/PhotoGrid/Grid';
 import { IPhotosRepository } from '../../browser/repositories/Photos';
 
-export interface IGirdContainerProps extends React.Props<any> {
-  photos: IPhotos;
+export interface IGirdContainerProps extends IPhotos, React.Props<any> {
   repository: IPhotosRepository;
 };
 
-export interface IGirdContainerState {
-  photos: Immutable.List<IPhoto>;
-};
+export interface IGirdContainerState extends IPhotos {};
 
 export class GirdContainer extends React.Component<IGirdContainerProps, IGirdContainerState> {
   repository: IPhotosRepository;
@@ -21,11 +17,14 @@ export class GirdContainer extends React.Component<IGirdContainerProps, IGirdCon
   constructor (props) {
     super(props);
     this.repository = props.repository;
-    this.state = { photos: Immutable.List(this.props.photos.items) };
+    this.state = {
+      title: this.props.title,
+      items: this.props.items
+    };
   };
 
   render () {
-    return (<Grid title={this.props.photos.title} items={this.state.photos} />);
+    return (<Grid {...this.state} />);
   };
 
   componentDidMount () {
@@ -33,7 +32,10 @@ export class GirdContainer extends React.Component<IGirdContainerProps, IGirdCon
 
   private fetchPhotos = () => {
     return this.repository.fetchPhotos().then(photos => {
-      this.setState({ photos: Immutable.List(photos.items) });
+      this.setState({
+        title: photos.title,
+        items: photos.items
+      });
     });
   }
 };

@@ -24,7 +24,7 @@ export default class PhotoAppController extends BaseController {
     this.photosRepository.search(searchTag)
       .then(photos => {
         res.render('index', {
-          html: ReactDOMServer.renderToString(<GirdContainer photos={photos} repository={null} />),
+          html: ReactDOMServer.renderToString(<GirdContainer {...photos} repository={null} />),
           data: JSON.stringify(photos)
         });
       })
@@ -39,7 +39,7 @@ export default class PhotoAppController extends BaseController {
     this.photosRepository.getRecent()
       .then(photos => {
         res.render('index', {
-          html: ReactDOMServer.renderToString(<GirdContainer photos={photos} repository={null} />),
+          html: ReactDOMServer.renderToString(<GirdContainer {...photos} repository={null} />),
           data: JSON.stringify(photos)
         });
       })

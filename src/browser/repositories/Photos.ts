@@ -2,8 +2,9 @@
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
 import * as Immutable from 'immutable';
-import { IPhotos, IPhoto } from '../../domains/photo';
+import { IPhotos } from '../../domains/photo';
 import { IAgent } from '../../browser/repositories/Agent';
+import * as Utils from '../../browser/utils/photos';
 
 export interface IPhotosRepository {
   fetchPhotos(): Promise<IPhotos>;
@@ -20,16 +21,6 @@ export class PhotosRepository implements IPhotosRepository {
 
   public fetchPhotos = (): Promise<IPhotos> => {
     return this.agent.request('GET', this.path)
-      .then(entity => this.parse(entity));
+      .then(entity => Utils.parsePhotos(entity));
   };
-
-  private parse (entity: any = {}): IPhotos {
-    let photos = _.map(entity.items, (item: any): IPhoto => {
-      return { name: item.name, imageUrl: item.imageUrl, height: item.height, width: item.width };
-    });
-    return {
-      title: entity.title,
-      items: Immutable.List(photos)
-    };
-  }
 };
