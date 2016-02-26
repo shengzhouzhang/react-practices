@@ -1,4 +1,3 @@
-/// <reference path="../../../typings/dotenv/dotenv.d.ts"/>
 
 import * as dotenv from 'dotenv';
 

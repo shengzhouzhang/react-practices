@@ -20,4 +20,6 @@
 /// <reference path="uglify-js/uglify-js.d.ts" />
 /// <reference path="webpack/webpack.d.ts" />
 /// <reference path="deep-freeze/deep-freeze.d.ts" />
+
+/// <reference path="dotenv/dotenv.d.ts"/>
 ///<reference path='../node_modules/immutable/dist/immutable.d.ts'/>

@@ -1,6 +1,3 @@
-/// <reference path="../../typings/body-parser/body-parser.d.ts"/>
-/// <reference path="../../typings/express-handlebars/express-handlebars.d.ts"/>
-/// <reference path="../../typings/webpack/webpack.d.ts"/>
 
 import * as path from 'path';
 import * as express from 'express';

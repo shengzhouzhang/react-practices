@@ -1,4 +1,3 @@
-///<reference path='../../../node_modules/immutable/dist/immutable.d.ts'/>
 
 import * as _ from 'lodash';
 import * as React from 'react';
