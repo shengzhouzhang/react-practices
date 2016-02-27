@@ -7,7 +7,6 @@ import { IAdjustedPhoto, Photo } from '../../components/PhotoGrid/GridItem';
 import { IPhotos, IPhoto } from '../../domains/photo';
 import CONFIG from '../../browser/config';
 
-
 const DEFAULT_SCREEN_WIDTH = CONFIG.DEFAULT_SCREEN_WIDTH;
 const DEFAULT_PHOTO_MARGIN = CONFIG.DEFAULT_PHOTO_MARGIN;
 const DEFAULT_PHOTO_HEIGHT = CONFIG.DEFAULT_PHOTO_HEIGHT;
@@ -35,7 +34,7 @@ export class Grid extends React.Component<IGridProps, IGridState> {
         return (<Photo key={`grid-item-${index}`} {...resizedPhoto} />)
     });
     let style = {
-      width: this.state.screenWidth,
+      width: this.state.screenWidth + .1,
       padding: DEFAULT_PHOTO_MARGIN
     };
     return (
@@ -96,7 +95,7 @@ export class Grid extends React.Component<IGridProps, IGridState> {
 
     let photos = photoList.toJS();
     let totalWidth = _.sumBy(photos, (photo: IPhoto) => photo.width);
-    let rate = screenWidth / totalWidth;
+    let rate = (screenWidth - DEFAULT_PHOTO_MARGIN * 2) / totalWidth;
     let minHeight = _.minBy(photos, (photo: IPhoto) => photo.height).height * rate - DEFAULT_PHOTO_MARGIN * 2;
 
     return _.map(photos, (photo: IPhoto) => {

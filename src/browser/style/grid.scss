@@ -1,9 +1,10 @@
 
+@import './mixin.scss';
+
 $photos-margin: 50px;
 
 .photo-list {
-  display: flex;
-  flex-wrap: wrap;
+  @include flex-wrap;
   background-color: #fff;
   margin: $photos-margin auto;
 }
