@@ -27,25 +27,25 @@
       "commit": "95433230a9913054c57c715e6b91a9ae738d0b97"
     },
     "request/request.d.ts": {
-      "commit": "95433230a9913054c57c715e6b91a9ae738d0b97"
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     },
     "node/node.d.ts": {
-      "commit": "dade4414712ce84e3c63393f1aae407e9e7e6af7"
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     },
     "form-data/form-data.d.ts": {
-      "commit": "95433230a9913054c57c715e6b91a9ae738d0b97"
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     },
     "bluebird/bluebird.d.ts": {
       "commit": "95433230a9913054c57c715e6b91a9ae738d0b97"
     },
     "express/express.d.ts": {
-      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     },
     "mime/mime.d.ts": {
-      "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     },
     "express-handlebars/express-handlebars.d.ts": {
       "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
@@ -64,6 +64,9 @@
     },
     "source-map/source-map.d.ts": {
       "commit": "dade4414712ce84e3c63393f1aae407e9e7e6af7"
+    },
+    "compression/compression.d.ts": {
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     }
   }
 }

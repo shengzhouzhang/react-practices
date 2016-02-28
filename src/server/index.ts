@@ -2,6 +2,7 @@
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as compression    from 'compression';
 import * as handlebars from 'express-handlebars';
 import { ROUTES } from '../config';
 import APP_CONFIG from '../server/config';
@@ -20,6 +21,7 @@ server.engine('handlebars', handlebars());
 server.set('view engine', 'handlebars');
 server.set('views', path.join(__dirname, 'templates'));
 
+server.use(compression(9));
 server.use(bodyParser.json());
 
 server.use(ROUTES.PhotoAPP, new PhotoAppController(photosRepository).getRouter());

@@ -1,9 +1,9 @@
 
-var gulp = require("gulp");
+var gulp = require('gulp');
 var rimraf = require('gulp-rimraf');
 var sass = require('gulp-sass');
 var ts = require('gulp-typescript');
-var gutil = require("gulp-util");
+var gutil = require('gulp-util');
 var webpack = require('webpack');
 var runSequence = require('run-sequence');
 
@@ -23,19 +23,24 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./dist/assets'));
 });
 
-gulp.task("webpack", function (callback) {
+gulp.task('webpack', function (callback) {
   webpack({
-    entry: [ './dist/src/browser/index.js' ],
-    evtool: '#source-map',
+    entry: {
+      app: './dist/src/browser/index.js',
+      vendors: [ 'react', 'react-dom', 'lodash', 'bluebird', 'immutable' ]
+    },
     output: {
       path: './dist/assets',
-      filename: "bundle.js"
+      filename: 'bundle.js'
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin({ minimize: true })
+      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.bundle.js', Infinity)
     ]
   }, function(err, stats) {
-    if(err) throw new gutil.PluginError("webpack", err);
+    if(err) throw new gutil.PluginError('webpack', err);
     callback();
   });
 });
