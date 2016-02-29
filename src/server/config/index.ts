@@ -1,6 +1,6 @@
 
 const CONFIG = {
-  PORT: parseInt(process.env.PORT),
+  PORT: parseInt(process.env.PORT) || 8080,
   FLICKR_KEY: process.env.FLICKR_KEY,
   TZ: 'Australia/Sydney'
 };
