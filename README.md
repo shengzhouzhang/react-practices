@@ -23,7 +23,7 @@ And do
 npm install
 ```
 
-# build & run
+# Build & Run
 
 ```
 gulp build
